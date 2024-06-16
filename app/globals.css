@@ -2,32 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.input-box {
+  @apply border p-3 rounded-md placeholder:text-[#333333] focus:outline-myGreen focus:bg-white;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.submit-btn {
+  @apply bg-myGreen w-full p-3 rounded-md font-semibold;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.table-container {
+  @apply rounded-[20px] border border-[#d5d5d5];
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.table-header {
+  @apply p-5 flex justify-between border-b;
+}
+
+.table-header h2 {
+  margin: 0;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+  @apply p-5 text-start
+}
+
+.user-table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.user-info {
+  @apply flex items-center
+}
+
+.user-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
 }
