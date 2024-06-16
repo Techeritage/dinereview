@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <div className="relative w-full h-[432px]">
       <video autoPlay muted loop className="w-full h-full object-cover">
-        <source src="hero.mp4" type="video/mp4" />
+        <source src="https://ik.imagekit.io/krr3p3joi/5101338-uhd_3840_2160_25fps.mp4?updatedAt=1718580469736" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className="flex flex-col items-center justify-evenly absolute bg-black/45 top-0 bottom-0 left-0 right-0 px-[5%]">
