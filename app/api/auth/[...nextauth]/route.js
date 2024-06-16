@@ -1,4 +1,3 @@
-// app/api/auth/[...nextauth].js
 import NextAuth from "next-auth";
 import { connectToDb } from "@/app/utils/config/mongodb";
 import Credentials from "next-auth/providers/credentials";
@@ -6,7 +5,7 @@ import Admin from "@/app/utils/models/AdminRegister";
 import User from "@/app/utils/models/UserRegister";
 import Restaurant from "@/app/utils/models/RestaurantRegister";
 
-export const authOptions = {
+const authOptions = {
   providers: [
     Credentials({
       name: "Credentials",
@@ -69,5 +68,4 @@ export const authOptions = {
   },
 };
 
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+export default (req, res) => NextAuth(req, res, authOptions);
