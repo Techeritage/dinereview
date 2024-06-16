@@ -68,4 +68,14 @@ const authOptions = {
   },
 };
 
-export default (req, res) => NextAuth(req, res, authOptions);
+const handler = (req, res) => NextAuth(req, res, authOptions);
+
+export const GET = async (req, res) => {
+  // Handle GET requests if necessary
+  return handler(req, res);
+};
+
+export const POST = async (req, res) => {
+  // Handle POST requests if necessary
+  return handler(req, res);
+};
