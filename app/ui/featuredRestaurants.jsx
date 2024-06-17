@@ -20,7 +20,7 @@ export default function FeaturedRestaurants({ restaurants }) {
         {restaurants.map((rest) => (
           <div key={rest._id} className="min-w-[270px]">
             <Image src={rest.images[0]}  width={270} height={126} alt={`${rest.name} image`} className="h-[126px] object-cover rounded-xl"/>
-            <div className="flex items-center gap-3 mt-2">
+            <div className="flex items-center gap-2 mt-2">
               <div className="flex items-center justify-center">
                 <Image src={rest.profilePictureUrl} width={40} height={40} alt={`${rest.name} logo`} className="h-[40px] object-contain border rounded-full" />
               </div>
