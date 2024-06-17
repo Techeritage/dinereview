@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <div className="relative w-full h-[432px]">
-      <Image src='/hero.jpg' width={400} height={432} alt="hero backgrouynd image" className="h-full object-cover" />
+      <Image src='/hero.jpg' width={400} height={432} alt="hero backgrouynd image" className="w-full h-full object-cover" />
       {/*<video autoPlay muted loop className="w-full h-full object-cover">
         <source src="https://ik.imagekit.io/krr3p3joi/5101338-uhd_3840_2160_25fps.mp4?updatedAt=1718580469736" type="video/mp4" />
         Your browser does not support the video tag.
