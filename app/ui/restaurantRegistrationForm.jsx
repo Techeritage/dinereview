@@ -36,6 +36,11 @@ export default function RestaurantRegistrationForm() {
         console.error("Sign-in failed:", result.error);
         return;
       } else {
+        setName("");
+        setEmail("");
+        setPhone("");
+        setPassword("");
+        setAddress("");
       }
     } catch (error) {
       console.log(error);
