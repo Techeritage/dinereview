@@ -22,7 +22,7 @@ export default function ReviewForm() {
           <XMarkIcon width={20} />
         </button>
         <div className="flex items-center justify-center gap-2">
-          <h2 className={`${risque.className} text-2xl whitespace-nowrap`}>
+          <h2 className={`${risque.className} text-3xl whitespace-nowrap`}>
             Hey {session?.user?.name.split(" ")[1]}
           </h2>
           <Image
