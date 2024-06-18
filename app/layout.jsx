@@ -1,6 +1,7 @@
 import "./globals.css";
 import { lato } from "./ui/fonts";
 import { AuthProvider } from "./providers/Providers";
+import { ReviewFormProvider } from "./providers/ReviewControl";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +12,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${lato.className} antialiased`}>
-        <AuthProvider>{children}</AuthProvider>
+        <ReviewFormProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </ReviewFormProvider>
       </body>
     </html>
   );

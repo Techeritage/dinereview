@@ -5,7 +5,6 @@ import Image from "next/image";
 
 export default function Header() {
   const { data: session } = useSession();
-  console.log(session);
 
   return (
     <nav className="px-[10%] py-2 flex items-center justify-between">

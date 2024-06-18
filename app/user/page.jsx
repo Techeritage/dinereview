@@ -1,6 +1,7 @@
 import Header from "../ui/header";
 import Hero from "@/app/ui/hero";
 import FeaturedRestaurants from "@/app/ui/featuredRestaurants";
+import  ReviewForm from "@/app/ui/reviewForm";
 import { getAllUsers } from "@/app/lib/powerhouse";
 import {getAllRestaurants} from "@/app/lib/powerhouse";
 
@@ -28,7 +29,7 @@ export default async function UserPage() {
   }
 
   return (
-    <main>
+    <main className="relative">
       <section>
         <Header />
       </section>
@@ -37,6 +38,9 @@ export default async function UserPage() {
       </section>
       <section>
         <FeaturedRestaurants restaurants={restaurantdata} />
+      </section>
+      <section>
+        <ReviewForm />
       </section>
     </main>
   );
