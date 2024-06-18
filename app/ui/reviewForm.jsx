@@ -37,7 +37,7 @@ export default function ReviewForm() {
         </p>
         <form>
           <select type="text" className="input-box w-full my-5">
-            <option value="">Choose a restaurant</option>
+            <option value="" disabled>Choose a restaurant</option>
           </select>
 
           <textarea

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function FeaturedRestaurants({ restaurants }) {
   return (
-    <div className="my-3">
+    <div className="my-3 mt-7">
       <div className="px-[5%] py-3 flex items-center justify-between">
         <h2 className={`${risque.className} text-lg capitalize`}>
           featured restaurants
