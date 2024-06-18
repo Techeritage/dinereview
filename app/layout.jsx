@@ -12,9 +12,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${lato.className} antialiased`}>
-        <ReviewFormProvider>
-          <AuthProvider>{children}</AuthProvider>
-        </ReviewFormProvider>
+        <AuthProvider>
+          <ReviewFormProvider>{children}</ReviewFormProvider>
+        </AuthProvider>
       </body>
     </html>
   );

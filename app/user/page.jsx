@@ -40,7 +40,7 @@ export default async function UserPage() {
         <FeaturedRestaurants restaurants={restaurantdata} />
       </section>
       <section>
-        <ReviewForm />
+        <ReviewForm restaurants={restaurantdata} />
       </section>
     </main>
   );

@@ -7,18 +7,31 @@ import Image from "next/image";
 import { useContext, useState } from "react";
 import ReviewFormContext from "../providers/ReviewControl";
 
-
-export default function ReviewForm() {
+export default function ReviewForm({ restaurants }) {
   const { data: session } = useSession();
+  const [selectedRestaurant, setSelectedRestaurant] = useState("");
+  const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
   const { isReviewFormVisible, hideReviewForm } = useContext(ReviewFormContext);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(selectedRestaurant);
+    console.log(comment);
+    console.log(rating);
+    console.log(session?.user?.id);
+  }
 
   if (!isReviewFormVisible) return null;
 
   return (
     <div className="fixed top-0 right-0 left-0 bottom-0 flex justify-center items-center px-[5%] py-9 bg-black/70">
       <div className="bg-white relative rounded-2xl w-[350px] h-fit p-7">
-        <button onClick={hideReviewForm} className="w-fit p-1 bg-gray-100 rounded-full absolute right-5 top-3">
+        <button
+          onClick={hideReviewForm}
+          className="w-fit p-1 bg-gray-100 rounded-full absolute right-5 top-3"
+        >
           <XMarkIcon width={20} />
         </button>
         <div className="flex items-center justify-center gap-2">
@@ -32,18 +45,32 @@ export default function ReviewForm() {
             alt="waving hand emoji"
           />
         </div>
-        <p className="font-medium text-center text-[#555555] text-sm">
+        <p className=" my-2 font-medium text-center text-[#555555] text-sm">
           Would you like to rate your experience?
         </p>
-        <form>
-          <select type="text" className="input-box w-full my-5">
-            <option value="" disabled>Choose a restaurant</option>
+        <form onSubmit={handleFormSubmit}>
+          <select
+            type="text"
+            value={selectedRestaurant}
+            onChange={(e) => setSelectedRestaurant(e.target.value)}
+            className="input-box w-full my-5"
+          >
+            <option value="" disabled>
+              Choose a restaurant
+            </option>
+            {restaurants.map((restaurant) => (
+              <option key={restaurant._id} value={restaurant._id}>
+                {restaurant.name}
+              </option>
+            ))}
           </select>
 
           <textarea
             className="resize-none input-box w-full"
             rows={5}
             placeholder="Write additional comments here ..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
           ></textarea>
           <div className="my-3">
             <p className="font-medium text-center text-[#555555] text-sm">
@@ -53,7 +80,12 @@ export default function ReviewForm() {
             </p>
             <StarRating onRate={setRating} />
           </div>
-          <button className="w-full mt-2 p-3 rounded-lg bg-myGreen text-white" type="submit">Submit</button>
+          <button
+            className="w-full mt-2 p-3 rounded-lg bg-myGreen text-white"
+            type="submit"
+          >
+            Submit
+          </button>
         </form>
       </div>
     </div>
