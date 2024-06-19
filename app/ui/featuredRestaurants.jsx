@@ -19,7 +19,7 @@ export default function FeaturedRestaurants({ restaurants }) {
         </Link>
       </div>
       <div className="px-[5%] mt-2 flex gap-3 overflow-scroll no-scrollbar">
-        {restaurants.map((rest) => (
+        {restaurants?.map((rest) => (
           <div key={rest._id} className="min-w-[270px]">
             <Image src={rest.images[0]}  width={270} height={150} alt={`${rest.name} image`} className="h-[150px] object-cover rounded-xl"/>
             <div className="flex items-center gap-2 mt-2">
