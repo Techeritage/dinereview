@@ -3,8 +3,6 @@ import { connectToDb } from "@/app/utils/config/mongodb";
 import Review from "../../utils/models/Review";
 import User from "@/app/utils/models/UserRegister";
 
-export const dynamic = "force-dynamic";
-
 export async function POST(req) {
   try {
     await connectToDb();
@@ -33,6 +31,8 @@ export async function POST(req) {
   }
 }
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req) {
   try {
     await connectToDb();
@@ -41,18 +41,11 @@ export async function GET(req) {
       .populate("restaurant") // Populate the 'restaurant' field
       .populate("user"); // Populate the 'user' field
 
-    return NextResponse.json(
-      {
-        status: 200,
-        success: true,
-        data: allReviews,
-      },
-      {
-        headers: {
-          "Cache-Control": "no-store, max-age=0",
-        },
-      }
-    );
+    return NextResponse.json({
+      status: 200,
+      success: true,
+      data: allReviews,
+    });
   } catch (error) {
     console.error(error);
     return NextResponse.json({
@@ -63,5 +56,3 @@ export async function GET(req) {
     });
   }
 }
-
-export const revalidate = 0;
