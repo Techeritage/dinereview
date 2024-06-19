@@ -24,13 +24,13 @@ export default function RecentReviews() {
     fetchAllReviews();
   }, []);
   return (
-    <div className="my-3 mt-7 px-[5%]">
+    <div className="my-3 mt-7 px-[5%] py-10 bg-gray-50">
       <h2 className={`${risque.className} tracking-wide text-xl capitalize`}>
         recent reviews
       </h2>
       <div className="mt-3">
         {reviews?.map((review) => (
-            <div key={review._id} className="border-b border-black/10 py-3">
+            <div key={review._id} className="mt-2 py-3 px-1 bg-white rounded-xl">
               <div className="flex items-center gap-2 mb-2 pl-2">
                 <Image
                   src={review?.restaurant?.profilePictureUrl}
