@@ -35,7 +35,7 @@ export const registerNewUser = async (name, email, password) => {
 
 export const addreview = async (user, restaurant, rating, comment) => {
   try {
-    const res = await axios.post("https://dinereview.vercel.app/api/review", {
+    const res = await axios.post("/api/review", {
       user,
       restaurant,
       rating,
