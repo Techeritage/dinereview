@@ -11,9 +11,7 @@ export const getAllUsers = async () => {
 
 export const getAllRestaurants = async () => {
   try {
-    const res = await axios.get(
-      "http/restaurants"
-    );
+    const res = await axios.get("api/restaurants");
     return res.data;
   } catch (error) {
     console.log(error);
@@ -49,10 +47,9 @@ export const addreview = async (user, restaurant, rating, comment) => {
 
 export const fetchReviews = async () => {
   try {
-    const res = await fetch(
-      "/api/review"
-    );
-    return res?.data;
+    const res = await fetch("/api/review");
+    const data = await res.json();
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -66,16 +63,13 @@ export const registerNewRestaurant = async (
   phone
 ) => {
   try {
-    const res = await axios.post(
-      "/api/restaurants",
-      {
-        name,
-        email,
-        password,
-        address,
-        phone,
-      }
-    );
+    const res = await axios.post("/api/restaurants", {
+      name,
+      email,
+      password,
+      address,
+      phone,
+    });
     return res.data;
   } catch (error) {
     console.log(error);
