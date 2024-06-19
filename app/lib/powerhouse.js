@@ -49,7 +49,9 @@ export const addreview = async (user, restaurant, rating, comment) => {
 
 export const fetchReviews = async () => {
   try {
-    const res = await axios.get("/api/review");
+    const res = await fetch(
+      "/api/products"
+    );
     return res?.data;
   } catch (error) {
     console.log(error);
