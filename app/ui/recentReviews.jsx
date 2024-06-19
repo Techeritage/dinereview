@@ -30,7 +30,7 @@ export default function RecentReviews() {
       </h2>
       <div className="mt-3">
         {reviews?.map((review) => (
-            <div key={review._id} className="mt-2 py-3 px-1 bg-white rounded-xl">
+            <div key={review._id} className="mt-2 shadow-sm py-3 px-1 bg-white rounded-xl">
               <div className="flex items-center gap-2 mb-2 pl-2">
                 <Image
                   src={review?.restaurant?.profilePictureUrl}
@@ -50,7 +50,7 @@ export default function RecentReviews() {
                   className="rounded-full h-[40px] object-cover"
                 />
                 <div>
-                  <p className={`${risque.className} text-sm`}>{review.user.name}</p>
+                  <p className={`${risque.className} tracking-wide`}>{review.user.name}</p>
                   <div className="flex items-center gap-3">
                     <RatingStar rating={review.rating} />
                     <TimeAgo timestamp={review.updatedAt} />
