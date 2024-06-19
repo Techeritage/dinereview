@@ -39,7 +39,7 @@ const authOptions = {
     }),
   ],
   pages: {
-    signIn: "/auth/signin",
+    signIn: "/",
   },
   session: {
     strategy: "jwt",
@@ -69,9 +69,12 @@ const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
+const handler = (req, res) => NextAuth(req, res, authOptions);
+
 export const GET = async (req, res) => {
-  return await NextAuth(req, res, authOptions);
+  return handler(req, res);
 };
+
 export const POST = async (req, res) => {
-  return await NextAuth(req, res, authOptions);
+  return handler(req, res);
 };

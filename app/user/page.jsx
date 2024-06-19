@@ -28,10 +28,6 @@ export default async function UserPage() {
     return <div>Error loading data</div>;
   }
 
-  if (!userdata) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <main className="relative">
       <section>

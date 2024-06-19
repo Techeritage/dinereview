@@ -40,7 +40,7 @@ export async function GET(req) {
   try {
     await connectToDb();
 
-    const allUsers = await User.find().populate("reviews");
+    const allUsers = await User.find();
     return NextResponse.json({
       status: 200,
       success: true,
