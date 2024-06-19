@@ -41,11 +41,18 @@ export async function GET(req) {
       .populate("restaurant") // Populate the 'restaurant' field
       .populate("user"); // Populate the 'user' field
 
-    return NextResponse.json({
-      status: 200,
-      success: true,
-      data: allReviews,
-    });
+    return NextResponse.json(
+      {
+        status: 200,
+        success: true,
+        data: allReviews,
+      },
+      {
+        headers: {
+          "Cache-Control": "no-store, max-age=0",
+        },
+      }
+    );
   } catch (error) {
     console.error(error);
     return NextResponse.json({
