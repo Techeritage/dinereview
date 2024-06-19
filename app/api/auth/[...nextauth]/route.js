@@ -77,5 +77,3 @@ export const GET = async (req, res) => {
 export const POST = async (req, res) => {
   return handler(req, res);
 };
-
-export default handler;
