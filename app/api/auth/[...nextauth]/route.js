@@ -1,13 +1,13 @@
 import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { connectToDb } from "@/app/utils/config/mongodb";
-import Credentials from "next-auth/providers/credentials";
 import Admin from "@/app/utils/models/AdminRegister";
 import User from "@/app/utils/models/UserRegister";
 import Restaurant from "@/app/utils/models/RestaurantRegister";
 
 const authOptions = {
   providers: [
-    Credentials({
+    CredentialsProvider({
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "email" },
@@ -21,7 +21,6 @@ const authOptions = {
           (await Restaurant.findOne({ email: credentials.email }));
 
         if (user) {
-          // Check if the user is a restaurant and its status
           if (user instanceof Restaurant && user.status !== "approved") {
             return null; // Deny access if the restaurant is not approved
           }
@@ -49,33 +48,34 @@ const authOptions = {
       if (user) {
         token.id = user.id;
         token.role = user.role;
-        token.email = user.email; // Add email to token if needed
-        token.status = user.status; // Add status
-        token.profilePicture = user.profilePicture; // Add profile picture
-        token.reviews = user.reviews; // Add reviews
+        token.email = user.email;
+        token.status = user.status;
+        token.profilePicture = user.profilePicture;
+        token.reviews = user.reviews;
       }
       return token;
     },
     async session({ session, token }) {
       session.user.id = token.id;
       session.user.role = token.role;
-      session.user.email = token.email; // Add email to session if needed
-      session.user.status = token.status; // Add status
-      session.user.profilePicture = token.profilePicture; // Add profile picture
-      session.user.reviews = token.reviews; // Add reviews
+      session.user.email = token.email;
+      session.user.status = token.status;
+      session.user.profilePicture = token.profilePicture;
+      session.user.reviews = token.reviews;
       return session;
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = (req, res) => NextAuth(req, res, authOptions);
 
 export const GET = async (req, res) => {
-  // Handle GET requests if necessary
   return handler(req, res);
 };
 
 export const POST = async (req, res) => {
-  // Handle POST requests if necessary
   return handler(req, res);
 };
+
+export default handler;
