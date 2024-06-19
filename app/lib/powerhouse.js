@@ -50,7 +50,7 @@ export const addreview = async (user, restaurant, rating, comment) => {
 export const fetchReviews = async () => {
   try {
     const res = await fetch(
-      "/api/products"
+      "/api/review"
     );
     return res?.data;
   } catch (error) {
