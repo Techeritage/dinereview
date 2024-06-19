@@ -1,18 +1,34 @@
+"use client";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { risque } from "./fonts";
 import Image from "next/image";
 import RestaurantStatus from "@/app/ui/restaurantStatus";
 import Link from "next/link";
 import { getAllRestaurants } from "@/app/lib/powerhouse";
+import { useEffect, useState } from "react";
 
-export default async function FeaturedRestaurants() {
-  const res = await getAllRestaurants();
-  const restaurants = res?.data;
+export default function FeaturedRestaurants() {
+  const [restaurants, setRestaurants] = useState();
+
+  async function fetchAllRestaurants() {
+    try {
+      const res = await getAllRestaurants();
+      if (res) {
+        setRestaurants(res?.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchAllRestaurants();
+  }, []);
 
   return (
     <div className="my-3 mt-7">
       <div className="px-[5%] py-3 flex items-center justify-between">
-        <h2 className={`${risque.className} text-lg capitalize`}>
+        <h2 className={`${risque.className} text-xl capitalize`}>
           featured restaurants
         </h2>
         <Link

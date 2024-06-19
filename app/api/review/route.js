@@ -3,6 +3,8 @@ import { connectToDb } from "@/app/utils/config/mongodb";
 import Review from "../../utils/models/Review";
 import User from "@/app/utils/models/UserRegister";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req) {
   try {
     await connectToDb();
@@ -30,8 +32,6 @@ export async function POST(req) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
-
-export const dynamic = "force-dynamic";
 
 export async function GET(req) {
   try {

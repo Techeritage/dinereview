@@ -8,7 +8,7 @@ import TimeAgo from "./timeAgo";
 export default function RecentReviews({ reviews }) {
   return (
     <div className="my-3 mt-7 px-[5%]">
-      <h2 className={`${risque.className} text-lg capitalize`}>
+      <h2 className={`${risque.className} text-xl capitalize`}>
         recent reviews
       </h2>
       <div>
@@ -22,7 +22,7 @@ export default function RecentReviews({ reviews }) {
                   alt={`${review.restaurant?.name} logo`}
                   className="rounded-full"
                 />
-                <p className="font-semibold text-sm">{review.restaurant?.name}</p>
+                <p className="font-semibold text-[#333333] text-sm">{review.restaurant?.name}</p>
               </div>
               <div className="flex items-center gap-2 pl-2 mb-2">
                 <Image
@@ -40,7 +40,7 @@ export default function RecentReviews({ reviews }) {
                   </div>
                 </div>
               </div>
-              <p className="text-xs pl-2 font-normal text-[#333333]" key={review._id}>{review.comment}</p>
+              <p className="text-sm pl-2 font-normal text-[#333333]" key={review._id}>{review.comment}</p>
             </div>
           ))}
       </div>
