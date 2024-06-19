@@ -11,7 +11,9 @@ export const getAllUsers = async () => {
 
 export const getAllRestaurants = async () => {
   try {
-    const res = await axios.get("https://dinereview.vercel.app/api/restaurants");
+    const res = await axios.get(
+      "https://dinereview.vercel.app/api/restaurants"
+    );
     return res.data;
   } catch (error) {
     console.log(error);
@@ -31,15 +33,47 @@ export const registerNewUser = async (name, email, password) => {
   }
 };
 
-export const registerNewRestaurant = async (name, email, password, address, phone) => {
+export const addreview = async (user, restaurant, rating, comment) => {
   try {
-    const res = await axios.post("https://dinereview.vercel.app/api/restaurants", {
-      name,
-      email,
-      password,
-      address,
-      phone,
+    const res = await axios.post("https://dinereview.vercel.app/api/review", {
+      user,
+      restaurant,
+      rating,
+      comment,
     });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchReviews = async () => {
+  try {
+    const res = await axios.get("https://dinereview.vercel.app/api/review");
+    return res?.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const registerNewRestaurant = async (
+  name,
+  email,
+  password,
+  address,
+  phone
+) => {
+  try {
+    const res = await axios.post(
+      "https://dinereview.vercel.app/api/restaurants",
+      {
+        name,
+        email,
+        password,
+        address,
+        phone,
+      }
+    );
     return res.data;
   } catch (error) {
     console.log(error);

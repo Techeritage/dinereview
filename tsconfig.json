@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/auth/[...nextauth]/route.js", "app/utils/config/mongodb.ts", "app/utils/models/AdminRegister.js", "app/admin/dashboard/page.jsx", "app/admin/(app/admin/users/page.jsxin/(overview)/lapp/admin/layout.jsx", "app/providers/SessionProvider.js", "app/ui/fonts.js", "app/ui/adminLoginForm.jsx", "app/ui/sidenav.jsx", "app/page.jsx", "app/layout.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/auth/[...nextauth]/route.js", "app/utils/config/mongodb.ts", "app/utils/models/AdminRegister.js", "app/admin/dashboard/page.jsx", "app/admin/(app/admin/users/page.jsxin/(overview)/lapp/admin/layout.jsx", "app/providers/SessionProvider.js", "app/ui/fonts.js", "app/ui/adminLoginForm.jsx", "app/ui/sidenav.jsx", "app/page.jsx", "app/layout.jsx", "app/ui/ratingStar.jsx"],
   "exclude": ["node_modules"]
 }

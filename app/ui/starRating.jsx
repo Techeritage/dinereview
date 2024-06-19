@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Star from './star';
  // Adjust the path according to your file structure
 
-const StarRating = ({ totalStars = 5, onRate }) => {
+const StarRating = ({ totalStars = 5, onRate, width }) => {
   const [rating, setRating] = useState(0);
 
   const handleClick = (ratingValue) => {
@@ -17,6 +17,7 @@ const StarRating = ({ totalStars = 5, onRate }) => {
           key={index}
           filled={index < rating}
           onClick={() => handleClick(index + 1)}
+          width={width}
         />
       ))}
     </div>

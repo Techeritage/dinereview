@@ -1,10 +1,11 @@
-"use client";
+'use client';
 import { risque } from "@/app/ui/fonts";
 import StarRating from "@/app/ui/starRating";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useContext, useState } from "react";
+import { addreview } from "../lib/powerhouse";
 import ReviewFormContext from "../providers/ReviewControl";
 
 export default function ReviewForm({ restaurants }) {
@@ -12,16 +13,31 @@ export default function ReviewForm({ restaurants }) {
   const [selectedRestaurant, setSelectedRestaurant] = useState("");
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
+  const [error, setError] = useState("");
+
   const { isReviewFormVisible, hideReviewForm } = useContext(ReviewFormContext);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(selectedRestaurant);
-    console.log(comment);
-    console.log(rating);
-    console.log(session?.user?.id);
-  }
+    const user = session?.user?.id;
+
+    try {
+      const result = await addreview(user, selectedRestaurant, rating, comment);
+      if (result?.error) {
+        setError("Error submitting review");
+        console.error("Review submission error:", result.error);
+      } else {
+        setSelectedRestaurant("");
+        setRating(0);
+        setComment("");
+        setError(""); // Clear any previous errors
+      }
+    } catch (error) {
+      console.error("Review submission error:", error);
+      setError("Error submitting review");
+    }
+  };
 
   if (!isReviewFormVisible) return null;
 
@@ -45,12 +61,11 @@ export default function ReviewForm({ restaurants }) {
             alt="waving hand emoji"
           />
         </div>
-        <p className=" my-2 font-medium text-center text-[#555555] text-sm">
+        <p className="my-2 font-medium text-center text-[#555555] text-sm">
           Would you like to rate your experience?
         </p>
         <form onSubmit={handleFormSubmit}>
           <select
-            type="text"
             value={selectedRestaurant}
             onChange={(e) => setSelectedRestaurant(e.target.value)}
             className="input-box w-full my-5"
@@ -78,8 +93,9 @@ export default function ReviewForm({ restaurants }) {
                 ? "Click a star to rate"
                 : `You rated ${rating} out of 5 stars`}
             </p>
-            <StarRating onRate={setRating} />
+            <StarRating onRate={setRating} width={35} />
           </div>
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
           <button
             className="w-full mt-2 p-3 rounded-lg bg-myGreen text-white"
             type="submit"
