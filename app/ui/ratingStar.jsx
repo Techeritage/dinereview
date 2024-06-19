@@ -11,10 +11,10 @@ const RatingStar = ({ rating }) => {
   for (let i = 1; i <= totalStars; i++) {
     if (i <= filledStars) {
       // Render filled star
-      stars.push(<StarIcon className="text-yellow-400 w-2" key={i} />);
+      stars.push(<StarIcon className="text-yellow-400 w-3" key={i} />);
     } else {
       // Render empty star
-      stars.push(<StarIcon className="text-gray-400 w-2" key={i} />);
+      stars.push(<StarIcon className="text-gray-400 w-3" key={i} />);
     }
   }
 

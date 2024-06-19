@@ -20,8 +20,9 @@ export default function RecentReviews({ reviews }) {
                   width={20}
                   height={20}
                   alt={`${review.restaurant?.name} logo`}
+                  className="rounded-full"
                 />
-                <p className="font-semibold text-xs">{review.restaurant?.name}</p>
+                <p className="font-semibold text-sm">{review.restaurant?.name}</p>
               </div>
               <div className="flex items-center gap-2 pl-2 mb-2">
                 <Image

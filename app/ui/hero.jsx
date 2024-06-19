@@ -22,7 +22,7 @@ export default function Hero() {
       </video>*/}
       <div className="flex flex-col items-center justify-evenly absolute bg-black/45 top-0 bottom-0 left-0 right-0 px-[5%]">
         <h1
-          className={`${risque.className} text-white leading-10 text-4xl text-center`}
+          className={`${risque.className} tracking-wide text-white leading-10 text-4xl text-center`}
         >
           Discover the Best <br></br> Dining Experiences
         </h1>

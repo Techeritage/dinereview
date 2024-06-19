@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <nav className="px-[10%] py-2 flex items-center justify-between">
-      <h1 className={`${risque.className} text-xl`}>DineReview</h1>
+      <h1 className={`${risque.className} text-xl tracking-wider`}>DineReview</h1>
       <Image
         src={session?.user?.profilePicture}
         width={50}
