@@ -21,6 +21,7 @@ const authOptions = {
           (await Restaurant.findOne({ email: credentials.email }));
 
         if (user) {
+          // Check if the user is a restaurant and its status
           if (user instanceof Restaurant && user.status !== "approved") {
             return null; // Deny access if the restaurant is not approved
           }
@@ -68,12 +69,9 @@ const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-const handler = (req, res) => NextAuth(req, res, authOptions);
-
 export const GET = async (req, res) => {
-  return handler(req, res);
+  return await NextAuth(req, res, authOptions);
 };
-
 export const POST = async (req, res) => {
-  return handler(req, res);
+  return await NextAuth(req, res, authOptions);
 };
