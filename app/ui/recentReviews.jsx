@@ -12,8 +12,7 @@ export default function RecentReviews({ reviews }) {
         recent reviews
       </h2>
       <div>
-        {reviews.length > 0 &&
-          reviews.map((review) => (
+        {reviews?.map((review) => (
             <div key={review._id} className="border-b border-black/10 py-3">
               <div className="flex items-center gap-2 mb-2 pl-2">
                 <Image
