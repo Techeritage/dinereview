@@ -1,17 +1,34 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { risque } from "./fonts";
 import Image from "next/image";
 import RatingStar from "./ratingStar";
 import TimeAgo from "./timeAgo";
+import { fetchReviews } from "@/app/lib/powerhouse";
 
-export default function RecentReviews({ reviews }) {
+export default function RecentReviews() {
+  const [reviews, setReviews] = useState();
+
+  async function fetchAllReviews() {
+    try {
+      const res = await fetchReviews();
+      if (res) {
+        setReviews(res?.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchAllReviews();
+  }, []);
   return (
     <div className="my-3 mt-7 px-[5%]">
-      <h2 className={`${risque.className} text-xl capitalize`}>
+      <h2 className={`${risque.className} tracking-wide text-xl capitalize`}>
         recent reviews
       </h2>
-      <div>
+      <div className="mt-3">
         {reviews?.map((review) => (
             <div key={review._id} className="border-b border-black/10 py-3">
               <div className="flex items-center gap-2 mb-2 pl-2">

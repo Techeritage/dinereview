@@ -4,8 +4,8 @@ import StarRating from "@/app/ui/starRating";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { useContext, useState } from "react";
-import { addreview } from "../lib/powerhouse";
+import { useContext, useEffect, useState } from "react";
+import { addreview, getAllRestaurants } from "../lib/powerhouse";
 import ReviewFormContext from "../providers/ReviewControl";
 
 export default function ReviewForm() {
@@ -16,6 +16,22 @@ export default function ReviewForm() {
   const [error, setError] = useState("");
 
   const { isReviewFormVisible, hideReviewForm } = useContext(ReviewFormContext);
+  const [restaurants, setRestaurants] = useState();
+
+  async function fetchAllRestaurants() {
+    try {
+      const res = await getAllRestaurants();
+      if (res) {
+        setRestaurants(res?.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchAllRestaurants();
+  }, []);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -73,7 +89,11 @@ export default function ReviewForm() {
             <option value="" disabled>
               Choose a restaurant
             </option>
-            
+            {restaurants?.map((restaurant) => (
+              <option key={restaurant._id} value={restaurant._id}>
+                {restaurant.name}
+              </option>
+            ))}
           </select>
 
           <textarea

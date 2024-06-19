@@ -28,7 +28,7 @@ export default function FeaturedRestaurants() {
   return (
     <div className="my-3 mt-7">
       <div className="px-[5%] py-3 flex items-center justify-between">
-        <h2 className={`${risque.className} text-xl capitalize`}>
+        <h2 className={`${risque.className} tracking-wide text-xl capitalize`}>
           featured restaurants
         </h2>
         <Link
