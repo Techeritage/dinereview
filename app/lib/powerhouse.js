@@ -49,7 +49,7 @@ export const addreview = async (user, restaurant, rating, comment) => {
 
 export const fetchReviews = async () => {
   try {
-    const res = await axios.get("https://dinereview.vercel.app/api/review");
+    const res = await axios.get("/api/review");
     return res?.data;
   } catch (error) {
     console.log(error);
