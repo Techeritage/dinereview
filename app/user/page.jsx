@@ -10,9 +10,6 @@ export default async function UserPage() {
   return (
     <main className="relative">
       <section>
-        <Header />
-      </section>
-      <section>
         <Hero />
       </section>
       <section>

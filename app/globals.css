@@ -29,7 +29,7 @@
 
 .user-table th,
 .user-table td {
-  @apply p-5 text-start
+  @apply p-5 text-start;
 }
 
 .user-table tbody tr:nth-child(odd) {
@@ -37,7 +37,7 @@
 }
 
 .user-info {
-  @apply flex items-center
+  @apply flex items-center;
 }
 
 .user-info img {
@@ -66,4 +66,31 @@
   overflow: hidden;
   white-space: wrap;
 }
+.bk-image {
+  position: relative;
+  background-image: url("/hero2.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+}
 
+.bk-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.65
+  ); /* Adjust the color and opacity as needed */
+  z-index: 1;
+}
+
+.bk-image-content {
+  position: relative;
+  z-index: 2;
+}
