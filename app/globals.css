@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .input-box {
-  @apply border p-3 rounded-md placeholder:text-[#333333] focus:outline-myGreen focus:bg-white;
+  @apply border p-3 rounded-md placeholder:text-[#333333] focus:outline-green-600 focus:bg-white;
 }
 
 .submit-btn {

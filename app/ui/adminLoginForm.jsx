@@ -1,21 +1,25 @@
 "use client";
 import Link from "next/link";
-import { risque } from "./fonts";
 import { useState } from "react";
 import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { FadeLoader, SyncLoader } from "react-spinners";
 
 export default function AdminLoginForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(""); // State for handling errors
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
     // Basic client-side validation
     if (!email || !password) {
       setError("Email and password are required.");
+      setLoading(false);
       return;
     }
 
@@ -29,11 +33,10 @@ export default function AdminLoginForm() {
       if (result?.error) {
         // Handle sign-in error
         setError("Invalid credentials. Please try again.");
-        console.error("Sign-in failed:", result.error);
+        setLoading(false);
         return;
       } else {
         const session = await getSession();
-        console.log(session);
         // Fetch session to get the role
         if (session?.user) {
           const role = session.user.role;
@@ -76,8 +79,15 @@ export default function AdminLoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
         <button type="submit" className="submit-btn text-white">
-          Login
+          {loading ? (
+            <div>
+              <SyncLoader color="white" size={7} />
+            </div>
+          ) : (
+            <span>Login</span>
+          )}
         </button>
       </form>
       <div className="text-center text-black text-sm mt-7">
