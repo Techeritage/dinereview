@@ -9,13 +9,13 @@ import Header from "./header";
 export default function Hero() {
   const { showReviewForm } = useContext(ReviewFormContext);
   return (
-    <div className="relative w-full bk-image min-h-[500px] lg:h-[600px]">
+    <div className="relative w-full bk-image min-h-[600px] lg:h-[600px]">
       <Header />
       {/*<video autoPlay muted loop className="w-full h-full object-cover">
         <source src="https://ik.imagekit.io/krr3p3joi/5101338-uhd_3840_2160_25fps.mp4?updatedAt=1718580469736" type="video/mp4" />
         Your browser does not support the video tag.
       </video>*/}
-      <div className="flex bk-image-content w-full h-[400px] lg:h-[500px] flex-col items-center justify-evenly px-[5%] lg:px-[10%]">
+      <div className="flex bk-image-content w-full h-[500px] lg:h-[500px] flex-col items-center justify-evenly px-[5%] lg:px-[10%]">
         <h1
           className={`${risque.className} tracking-wide text-white leading-10 text-4xl lg:text-5xl text-center`}
         >
