@@ -53,7 +53,7 @@ export default function AdminLoginForm() {
 
   return (
     <div className="w-full mx-[3%] md:w-[400px] p-5 bg-white min-h-[400px] rounded-2xl shadow-md">
-      <h2 className={`text-2xl text-myGreen font-bold text-center mb-10`}>
+      <h2 className={`text-2xl text-green-600 font-bold text-center mb-10`}>
         Login to your account
       </h2>
       {error && (
@@ -82,7 +82,7 @@ export default function AdminLoginForm() {
       </form>
       <div className="text-center text-black text-sm mt-7">
         Yet to have an account?
-        <span className="text-myGreen">
+        <span className="text-green-600">
           <Link href="/register"> register here</Link>
         </span>
       </div>

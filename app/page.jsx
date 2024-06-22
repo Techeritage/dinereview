@@ -3,7 +3,7 @@ import AdminLoginForm from "./ui/adminLoginForm";
 import Image from "next/image";
 export default function AdminPage() {
   return (
-    <main className=" bg-myGreen h-screen">
+    <main className=" bg-green-600 h-screen">
       <div className="flex justify-center py-10 pt-14">
         <Image src="/logo.svg" width={220} height={100} alt="logo" />
       </div>

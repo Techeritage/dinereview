@@ -7,7 +7,7 @@
 }
 
 .submit-btn {
-  @apply bg-myGreen w-full p-3 rounded-md font-semibold;
+  @apply bg-green-600 w-full p-3 rounded-md font-semibold;
 }
 
 .table-container {
