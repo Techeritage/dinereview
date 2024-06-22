@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import { risque } from "./fonts";
 import Link from "next/link";
 import {
@@ -8,11 +9,11 @@ import {
   PencilSquareIcon,
 } from "@heroicons/react/24/outline";
 import { format } from "date-fns";
-import { useEffect, useState } from "react";
 import axios from "axios";
-import { getAllRestaurants } from "../lib/powerhouse";
+import RatingStar from "./ratingStar";
+import { fetchReviews } from "../lib/powerhouse";
 
-const RestaurantTable = () => {
+const ReviewTable = () => {
   // Function to format the date
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -21,10 +22,11 @@ const RestaurantTable = () => {
     return { formattedDate, formattedTime };
   };
 
+  // Step 1: State to track which row is toggled
   const [toggledRow, setToggledRow] = useState(null);
-  const [restaurants, setRestaurants] = useState(null);
+  const [reviews, setReviews] = useState(null);
 
-  // Step 2: Create a function to handle the toggle
+  // Step 2: Create a function to handle the toggle for each row
   const handleToggle = (rowId) => {
     // Toggle the row if it's already toggled, otherwise set it as toggled
     setToggledRow((prevRow) => (prevRow === rowId ? null : rowId));
@@ -32,7 +34,7 @@ const RestaurantTable = () => {
 
   const handleApprove = async (id) => {
     try {
-      await axios.post(`/api/admin/restaurant/${id}/approve`);
+      await axios.post(`/api/admin/review/${id}/approve`);
     } catch (error) {
       console.log(error);
     }
@@ -40,38 +42,34 @@ const RestaurantTable = () => {
 
   const handleReject = async (id) => {
     try {
-      await axios.post(`/api/admin/restaurant/${id}/reject`);
+      await axios.post(`/api/admin/review/${id}/reject`);
     } catch (error) {
       console.log(error);
     }
   };
+
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/api/admin/restaurant/${id}/delete`);
+      await axios.delete(`/api/admin/review/${id}/delete`);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const fetchRestaurants = async () => {
-    try {
-      const res = await getAllRestaurants();
-      if (res.status === 200) {
-        setRestaurants(res.data);
-      }
-    } catch (error) {
-      console.log(error);
+  async function fetchAllReview() {
+    const res = await fetchReviews();
+    if (res.status === 200) {
+      setReviews(res?.data);
     }
-  };
+  }
 
   useEffect(() => {
-    fetchRestaurants();
+    fetchAllReview();
   }, []);
-
   return (
     <div className="table-container">
       <div className="table-header">
-        <h2 className={`${risque.className} text-lg`}>New Restaurants</h2>
+        <h2 className={`${risque.className} text-lg`}>New Reviews</h2>
         <Link href="/view-all" className="flex items-center">
           <span className="text-black text-sm mr-1">View All</span>
           <span>
@@ -82,60 +80,62 @@ const RestaurantTable = () => {
       <table className="user-table">
         <thead>
           <tr>
-            <th>Restaurant</th>
-            <th>Address</th>
-            <th className="whitespace-nowrap">Cuisine Type</th>
-            <th>Added Date</th>
-            <th>Status</th>
-            <th>Action</th>
+            <th className="whitespace-nowrap">Restaurant Name</th>
+            <th className="whitespace-nowrap">Reviewer Name</th>
+            <th className="whitespace-nowrap">Rating</th>
+            <th className="whitespace-nowrap">Review Date</th>
+            <th className="whitespace-nowrap">Review Text</th>
+            <th className="whitespace-nowrap">Status</th>
+            <th className="whitespace-nowrap">Action</th>
           </tr>
         </thead>
         <tbody>
-          {restaurants?.map((user) => {
-            const { formattedDate, formattedTime } = formatDate(user.createdAt);
+          {reviews?.map((review) => {
+            const { formattedDate, formattedTime } = formatDate(
+              review.createdAt
+            );
             return (
-              <tr key={user.email}>
+              <tr key={review._id}>
                 <td>
-                  <div className="user-info">
-                    <img src={user?.profilePictureUrl} alt="Profile Picture" />
-                    <div>
-                      <h3 className={`${risque.className}`}>{user.name}</h3>
-                      <p className="text-sm text-[#555555]">{user.email}</p>
-                      <p className="text-sm text-[#555555]">{user.phone}</p>
-                    </div>
-                  </div>
+                  <h3 className={`${risque.className}`}>
+                    {review.restaurant?.name}
+                  </h3>
                 </td>
                 <td>
-                  <p className="text-sm font-medium">{user?.address}</p>
+                  <h3 className={`${risque.className}`}>{review.user?.name}</h3>
                 </td>
                 <td>
-                  <p className="text-sm font-medium">{user?.cuisineType}</p>
+                  <RatingStar rating={review.rating} />
                 </td>
                 <td>
-                  <div>
-                    <p className="text-sm font-medium">{formattedDate}</p>
-                    <p className="text-sm font-medium">{formattedTime}</p>
-                  </div>
+                  <p className="text-sm font-medium">{formattedDate}</p>
+                  <p className="text-sm font-medium">{formattedTime}</p>
                 </td>
-                <td className="text-sm font-medium">{user?.status}</td>
+                <td>
+                  <p className="text-sm font-medium truncated max-w-[150px] h-14">
+                    {review.comment}
+                  </p>
+                </td>
+                <td className="text-sm font-medium">{review.status}</td>
                 <td>
                   <div className="flex items-center gap-2 relative">
-                    {toggledRow === user._id && (
+                    {/* Step 3: Conditional rendering based on toggledRow */}
+                    {toggledRow === review._id && (
                       <div className="p-2 absolute right-5 top-[-110px] bg-white border rounded-md">
                         <button
-                          onClick={() => handleApprove(user._id)}
+                          onClick={() => handleApprove(review._id)}
                           className="border-b mb-1 p-1 pr-7 cursor-pointer"
                         >
                           Approve
                         </button>
                         <button
-                          onClick={() => handleReject(user._id)}
+                          onClick={() => handleReject(review._id)}
                           className="border-b mb-1 p-1 pr-7 cursor-pointer"
                         >
                           Reject
                         </button>
                         <button
-                          onClick={() => handleDelete(user._id)}
+                          onClick={() => handleDelete(review._id)}
                           className="p-1 pr-7 mb-1 cursor-pointer"
                         >
                           Delete
@@ -152,7 +152,7 @@ const RestaurantTable = () => {
                     </button>
                     <button
                       className="w-[50px] h-[50px] bg-[#d5d5d5]/15 flex items-center justify-center rounded-md"
-                      onClick={() => handleToggle(user._id)}
+                      onClick={() => handleToggle(review._id)}
                     >
                       <EllipsisHorizontalIcon className="w-[25px] text-black" />
                     </button>
@@ -167,4 +167,4 @@ const RestaurantTable = () => {
   );
 };
 
-export default RestaurantTable;
+export default ReviewTable;

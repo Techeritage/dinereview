@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getAllUsers = async () => {
   try {
-    const res = await axios.get("https://dinereview.vercel.app/api/users");
+    const res = await axios.get("http://localhost:3000/api/users");
     return res.data;
   } catch (error) {
     console.log(error);
@@ -11,7 +11,7 @@ export const getAllUsers = async () => {
 
 export const getAllRestaurants = async () => {
   try {
-    const res = await axios.get("https://dinereview.vercel.app/api/restaurants");
+    const res = await axios.get("http://localhost:3000/api/restaurants");
     return res.data;
   } catch (error) {
     console.log(error);
@@ -20,7 +20,7 @@ export const getAllRestaurants = async () => {
 
 export const registerNewUser = async (name, email, password) => {
   try {
-    const res = await axios.post("https://dinereview.vercel.app/api/users", {
+    const res = await axios.post("http://localhost:3000/api/users", {
       name,
       email,
       password,
@@ -33,7 +33,7 @@ export const registerNewUser = async (name, email, password) => {
 
 export const addreview = async (user, restaurant, rating, comment) => {
   try {
-    const res = await axios.post("https://dinereview.vercel.app/api/review", {
+    const res = await axios.post("http://localhost:3000/api/review", {
       user,
       restaurant,
       rating,
@@ -45,9 +45,20 @@ export const addreview = async (user, restaurant, rating, comment) => {
   }
 };
 
+export const deleteUser = async (id) => {
+  try {
+    const res = await axios.delete(
+      `http://localhost:3000/api/admin/users/${id}`
+    );
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const fetchReviews = async () => {
   try {
-    const res = await fetch("https://dinereview.vercel.app/api/review");
+    const res = await fetch("http://localhost:3000/api/review");
     const data = await res.json();
     return data;
   } catch (error) {
@@ -63,7 +74,7 @@ export const registerNewRestaurant = async (
   phone
 ) => {
   try {
-    const res = await axios.post("https://dinereview.vercel.app/api/restaurants", {
+    const res = await axios.post("http://localhost:3000/api/restaurants", {
       name,
       email,
       password,

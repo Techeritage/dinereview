@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { risque } from "./fonts";
 import Link from "next/link";
 import {
@@ -8,8 +9,10 @@ import {
   TrashIcon,
 } from "@heroicons/react/24/outline";
 import { format } from "date-fns";
+import { deleteUser, getAllUsers } from "../lib/powerhouse";
 
-const UserTable = ({ users }) => {
+const UserTable = () => {
+  const [users, setUsers] = useState(null);
   // Function to format the date
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -17,6 +20,28 @@ const UserTable = ({ users }) => {
     const formattedTime = format(date, "HH:mm");
     return { formattedDate, formattedTime };
   };
+
+  async function fetchUser() {
+    try {
+      const res = await getAllUsers();
+      if (res.status === 200) {
+        setUsers(res.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function deleteUserFunc(id) {
+    const res = await deleteUser(id);
+    if (res?.status === 200) {
+      console.log("deleted");
+    }
+  }
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   return (
     <div className="table-container">
@@ -47,9 +72,7 @@ const UserTable = ({ users }) => {
                   <div className="user-info">
                     <img src={user.profilePicture} alt="Profile Picture" />
                     <div>
-                      <h3 className={`${risque.className}`}>
-                        {user.name}
-                      </h3>
+                      <h3 className={`${risque.className}`}>{user.name}</h3>
                       <p className="text-sm text-[#555555]">{user.email}</p>
                     </div>
                   </div>
@@ -69,7 +92,10 @@ const UserTable = ({ users }) => {
                     <button className="w-[50px] h-[50px] bg-[#DB00FF]/15 flex items-center justify-center rounded-md">
                       <PencilSquareIcon className="w-[25px] text-[#DB00FF]" />
                     </button>
-                    <button className="w-[50px] h-[50px] bg-[#FF0000]/15 flex items-center justify-center rounded-md">
+                    <button
+                      onClick={() => deleteUserFunc(user._id)}
+                      className="w-[50px] h-[50px] bg-[#FF0000]/15 flex items-center justify-center rounded-md"
+                    >
                       <TrashIcon className="w-[25px] text-[#FF0000]" />
                     </button>
                   </div>

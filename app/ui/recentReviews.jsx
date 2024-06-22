@@ -50,7 +50,7 @@ export default function RecentReviews() {
                   className="rounded-full h-[40px] object-cover"
                 />
                 <div>
-                  <p className={`${risque.className} tracking-wide`}>{review.user.name}</p>
+                  <p className={`${risque.className} text-sm tracking-wide`}>{review.user.name}</p>
                   <div className="flex items-center gap-3">
                     <RatingStar rating={review.rating} />
                     <TimeAgo timestamp={review.updatedAt} />
