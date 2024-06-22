@@ -3,13 +3,15 @@ import Link from "next/link";
 import { useState } from "react";
 import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { FadeLoader, SyncLoader } from "react-spinners";
+import { SyncLoader } from "react-spinners";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
 export default function AdminLoginForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(""); // State for handling errors
 
   const handleSubmit = async (e) => {
@@ -55,8 +57,8 @@ export default function AdminLoginForm() {
   };
 
   return (
-    <div className="w-full mx-[3%] md:w-[400px] p-5 bg-white min-h-[400px] rounded-2xl shadow-md">
-      <h2 className={`text-2xl text-green-600 font-bold text-center mb-10`}>
+    <div className="w-full mx-[3%] md:w-[400px] py-7 px-5 bg-white min-h-[400px] rounded-2xl shadow-md">
+      <h2 className="text-2xl text-green-600 font-bold text-center mb-10">
         Login to your account
       </h2>
       {error && (
@@ -71,14 +73,28 @@ export default function AdminLoginForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
-          type="password"
-          placeholder="Password"
-          className="input-box"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            className="input-box"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {password && (
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute text-[#555555] right-3 top-[50%] translate-y-[-50%] cursor-pointer"
+            >
+              {showPassword ? (
+                <EyeSlashIcon width={20} />
+              ) : (
+                <EyeIcon width={20} />
+              )}
+            </span>
+          )}
+        </div>
 
         <button type="submit" className="submit-btn text-white">
           {loading ? (
