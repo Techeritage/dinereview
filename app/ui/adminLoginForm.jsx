@@ -52,14 +52,14 @@ export default function AdminLoginForm() {
   };
 
   return (
-    <div className="min-w-[400px] p-5 bg-white min-h-[400px] rounded-2xl shadow-md">
-      <h2 className={`${risque.className} text-4xl font-bold text-center mb-7`}>
-        Login
+    <div className="w-full mx-[3%] md:w-[400px] p-5 bg-white min-h-[400px] rounded-2xl shadow-md">
+      <h2 className={`text-2xl text-myGreen font-bold text-center mb-10`}>
+        Login to your account
       </h2>
       {error && (
         <p className="text-red-500 text-sm mb-3 text-center">{error}</p>
       )}
-      <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Email"
@@ -76,11 +76,11 @@ export default function AdminLoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="submit-btn text-white mt-10">
+        <button type="submit" className="submit-btn text-white">
           Login
         </button>
       </form>
-      <div className="text-center text-black text-sm mt-3">
+      <div className="text-center text-black text-sm mt-7">
         Yet to have an account?
         <span className="text-myGreen">
           <Link href="/register"> register here</Link>

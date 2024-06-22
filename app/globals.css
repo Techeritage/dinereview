@@ -71,6 +71,7 @@
   background-image: url("https://ik.imagekit.io/krr3p3joi/pexels-picsfast-8753680.jpg?updatedAt=1719094346795");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   width: 100%;
 }
 
