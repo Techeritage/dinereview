@@ -30,7 +30,7 @@ export default function Hero() {
           />
         </div>
         <div className="relative w-[320px] h-[75px] lg:h-[85px] lg:w-[450px]">
-          <button className="absolute top-0 whitespace-nowrap w-[150px] lg:w-[200px] lg:py-4 py-3 rounded-xl bg-myGreen text-white text-sm lg:text-base text-center font-semibold">
+          <button className="absolute top-0 whitespace-nowrap w-[150px] lg:w-[200px] lg:py-4 py-3 rounded-xl bg-green-600 text-white text-sm lg:text-base text-center font-semibold">
             Explore Restaurants
           </button>
           <button
