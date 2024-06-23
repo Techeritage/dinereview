@@ -39,7 +39,7 @@ export default function UserRegistrationForm() {
         console.log("Registration successful");
         setTimeout(() => {
           router.push("/");
-        }, 3000); // Redirect after 3 seconds
+        }, 5000); // Redirect after 3 seconds
       } else {
         setError(res.error); // Handle error from backend
         setLoading(false);
