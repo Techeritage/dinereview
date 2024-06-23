@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useContext } from "react";
 import ReviewFormContext from "../providers/ReviewControl";
 import Header from "./header";
+import Link from "next/link";
 
 export default function Hero() {
   const { showReviewForm } = useContext(ReviewFormContext);
@@ -12,9 +13,15 @@ export default function Hero() {
     <div className="relative w-full h-[600px]">
       <Image
         src="https://ik.imagekit.io/krr3p3joi/tr:w-500,h-600/top-view-table-full-delicious-food-composition%20(1).jpg?updatedAt=1719179275435"
+        width={500}
+        height={600}
+        className="w-full md:hidden h-[600px] object-cover"
+      />
+      <Image
+        src="https://ik.imagekit.io/krr3p3joi/top-view-table-full-delicious-food-composition.jpg?updatedAt=1719180396207"
         width={2000}
         height={1000}
-        className="w-full h-[600px] object-cover"
+        className="w-full h-[600px] hidden md:block object-cover"
       />
       <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/60">
         <Header />
@@ -37,8 +44,8 @@ export default function Hero() {
             />
           </div>
           <div className="relative w-[320px] h-[75px] lg:h-[85px] lg:w-[450px]">
-            <button className="absolute top-0 whitespace-nowrap w-[150px] lg:w-[200px] lg:py-4 py-4 rounded-xl bg-green-600 text-white text-sm lg:text-base text-center font-semibold">
-              Explore Restaurants
+            <button className="absolute top-0 whitespace-nowrap w-[150px] lg:w-[200px] lg:py-4 py-4 rounded-xl bg-myGreen text-white text-sm lg:text-base text-center font-semibold">
+              <Link href="/user/restaurants">Explore Restaurants</Link>
             </button>
             <button
               onClick={showReviewForm}
