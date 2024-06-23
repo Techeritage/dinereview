@@ -10,7 +10,7 @@ export async function POST(req) {
     const { name, email, password } = await req.json();
 
     const ifUserExists = await User.findOne({ email });
-    
+
     if (ifUserExists) {
       return NextResponse.json(
         { error: "User already exists" },
@@ -30,6 +30,7 @@ export async function POST(req) {
 
     return NextResponse.json({
       message: "User created successfully",
+      status: 200,
       success: true,
       data: savedUser,
     });

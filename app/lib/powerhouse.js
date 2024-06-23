@@ -27,14 +27,12 @@ export const registerNewUser = async (name, email, password) => {
     });
 
     // Assuming your backend sends a structured response like { data, error }
-    return res.data; // Return the actual data from the response
-
+    return res; // Return the actual data from the response
   } catch (error) {
     console.log("Registration error:", error);
     throw error; // Rethrow the error to be caught by the caller (e.g., UserRegistrationForm)
   }
 };
-
 
 export const addreview = async (user, restaurant, rating, comment) => {
   try {

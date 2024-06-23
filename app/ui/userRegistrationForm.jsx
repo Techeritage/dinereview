@@ -30,17 +30,17 @@ export default function UserRegistrationForm() {
     try {
       const res = await registerNewUser(name, email, password);
 
-      if (res?.error) {
+      if (res?.status === 200) {
+        // Handle success case
+        setLoading(false);
+        console.log("Registration successful");
+        router.push("/");
+      } else {
         setError(res.error); // Handle error from backend
         setLoading(false);
         console.log("Error detected");
         return;
       }
-
-      // Handle success case
-      setLoading(false);
-      console.log("Registration successful");
-      router.push("/login");
     } catch (error) {
       console.error("Registration error:", error);
       setLoading(false);
