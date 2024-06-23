@@ -15,7 +15,7 @@ export default function UserRegistrationForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(true); // State for handling errors
+  const [success, setSuccess] = useState(false); // State for handling errors
 
   const handleSubmit = async (e) => {
     e.preventDefault();
