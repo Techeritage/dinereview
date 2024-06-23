@@ -43,14 +43,14 @@ export default function RecentReviews() {
               </div>
               <div className="flex items-center gap-2 pl-2 mb-2">
                 <Image
-                  src={review?.user.profilePicture}
+                  src={review?.user?.profilePicture}
                   width={40}
                   height={40}
                   alt={`${review.restaurant?.name} logo`}
                   className="rounded-full h-[40px] object-cover"
                 />
                 <div>
-                  <p className={`${risque.className} text-sm tracking-wide`}>{review.user.name}</p>
+                  <p className={`${risque.className} text-sm tracking-wide`}>{review.user?.name}</p>
                   <div className="flex items-center gap-3">
                     <RatingStar rating={review.rating} />
                     <TimeAgo timestamp={review.updatedAt} />

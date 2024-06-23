@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectToDb } from "@/app/utils/config/mongodb";
 import User from "@/app/utils/models/UserRegister";
-
-export const dynamic = "force-dynamic";
+import bcrypt from "bcrypt";
 
 export async function POST(req) {
   await connectToDb();
@@ -11,6 +10,7 @@ export async function POST(req) {
     const { name, email, password } = await req.json();
 
     const ifUserExists = await User.findOne({ email });
+    
     if (ifUserExists) {
       return NextResponse.json(
         { error: "User already exists" },
@@ -18,10 +18,12 @@ export async function POST(req) {
       );
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const newUser = new User({
       name,
       email,
-      password,
+      password: hashedPassword,
     });
 
     const savedUser = await newUser.save();

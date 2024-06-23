@@ -4,6 +4,7 @@ import { connectToDb } from "@/app/utils/config/mongodb";
 import Admin from "@/app/utils/models/AdminRegister";
 import User from "@/app/utils/models/UserRegister";
 import Restaurant from "@/app/utils/models/RestaurantRegister";
+import bcrypt from "bcrypt";
 
 const authOptions = {
   providers: [
@@ -26,8 +27,12 @@ const authOptions = {
             return null; // Deny access if the restaurant is not approved
           }
 
-          // Plain text comparison for testing
-          if (credentials.password === user.password) {
+          // Compare hashed passwords
+          const isPasswordValid = await bcrypt.compare(
+            credentials.password,
+            user.password
+          );
+          if (isPasswordValid) {
             return user;
           } else {
             return null;

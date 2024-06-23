@@ -1,48 +1,61 @@
 "use client";
 import Link from "next/link";
-import { risque } from "./fonts";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { registerNewUser } from "@/app/lib/powerhouse";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import { SyncLoader } from "react-spinners";
 
 export default function UserRegistrationForm() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(""); // State for handling errors
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     // Basic client-side validation
     if (!email || !password || !name) {
       setError("All fields info are required.");
+      setLoading(false);
       return;
     }
 
+    // Assuming you have structured response handling in handleSubmit
     try {
-      const result = await registerNewUser(name, email, password);
-      if (result?.error) {
-        // Handle sign-in error
-        setError("User already exist.");
-        console.error("Sign-in failed:", result.error);
+      const res = await registerNewUser(name, email, password);
+
+      if (res?.error) {
+        setError(res.error); // Handle error from backend
+        setLoading(false);
+        console.log("Error detected");
         return;
-      } else {
       }
+
+      // Handle success case
+      setLoading(false);
+      console.log("Registration successful");
+      router.push("/login");
     } catch (error) {
-      console.log(error);
+      console.error("Registration error:", error);
+      setLoading(false);
+      setError("Registration failed. Please try again later.");
     }
   };
-
   return (
-    <div className="min-w-[400px] p-5 bg-white min-h-[400px] rounded-2xl shadow-md">
-      <h2 className={`${risque.className} text-4xl font-bold text-center mb-7`}>
-        Register
+    <div className="w-full mx-[3%] md:w-[400px] py-7 px-5 bg-white rounded-2xl shadow-md">
+      <h2 className={`text-2xl text-green-600 font-bold text-center mb-10`}>
+        Register for an Account
       </h2>
       {error && (
         <p className="text-red-500 text-sm mb-3 text-center">{error}</p>
       )}
-      <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Fullname"
@@ -59,19 +72,39 @@ export default function UserRegistrationForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
-          type="password"
-          placeholder="Password"
-          className="input-box"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit" className="submit-btn text-white mt-10">
-          Register
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            className="input-box"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {password && (
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute text-[#555555] right-3 top-[50%] translate-y-[-50%] cursor-pointer"
+            >
+              {showPassword ? (
+                <EyeSlashIcon width={20} />
+              ) : (
+                <EyeIcon width={20} />
+              )}
+            </span>
+          )}
+        </div>
+        <button type="submit" className="submit-btn text-white">
+          {loading ? (
+            <div>
+              <SyncLoader color="white" size={7} />
+            </div>
+          ) : (
+            <span>Register</span>
+          )}
         </button>
       </form>
-      <div className="text-center text-black text-sm mt-3">
+      <div className="text-center text-black text-sm mt-7">
         Already have an account?
         <span className="text-myGreen">
           <Link href="/"> login here</Link>
