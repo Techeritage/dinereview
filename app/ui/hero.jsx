@@ -37,12 +37,12 @@ export default function Hero() {
             />
           </div>
           <div className="relative w-[320px] h-[75px] lg:h-[85px] lg:w-[450px]">
-            <button className="absolute top-0 whitespace-nowrap w-[150px] lg:w-[200px] lg:py-4 py-3 rounded-xl bg-green-600 text-white text-sm lg:text-base text-center font-semibold">
+            <button className="absolute top-0 whitespace-nowrap w-[150px] lg:w-[200px] lg:py-4 py-4 rounded-xl bg-green-600 text-white text-sm lg:text-base text-center font-semibold">
               Explore Restaurants
             </button>
             <button
               onClick={showReviewForm}
-              className="absolute bottom-0 right-0 whitespace-nowrap w-[150px] py-3 lg:w-[200px] lg:py-4 rounded-xl bg-white text-black lg:text-base text-center text-sm font-semibold"
+              className="absolute bottom-0 right-0 whitespace-nowrap w-[150px] py-4 lg:w-[200px] lg:py-4 rounded-xl bg-white text-black lg:text-base text-center text-sm font-semibold"
             >
               Write A Review
             </button>
