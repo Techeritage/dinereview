@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { risque } from "@/app/ui/fonts";
 import StarRating from "@/app/ui/starRating";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -47,7 +47,9 @@ export default function ReviewForm() {
         setSelectedRestaurant("");
         setRating(0);
         setComment("");
-        setError(""); // Clear any previous errors
+        setError("");
+        hideReviewForm();
+        alert("thanks for your review");
       }
     } catch (error) {
       console.error("Review submission error:", error);
@@ -58,7 +60,7 @@ export default function ReviewForm() {
   if (!isReviewFormVisible) return null;
 
   return (
-    <div className="fixed top-0 right-0 left-0 bottom-0 flex justify-center items-center px-[5%] py-9 bg-black/70">
+    <div className="fixed z-10 top-0 right-0 left-0 bottom-0 flex justify-center items-center px-[5%] py-9 bg-black/70">
       <div className="bg-white relative rounded-2xl w-[350px] h-fit p-7">
         <button
           onClick={hideReviewForm}

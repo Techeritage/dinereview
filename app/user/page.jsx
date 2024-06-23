@@ -1,4 +1,3 @@
-import Header from "../ui/header";
 import Hero from "@/app/ui/hero";
 import FeaturedRestaurants from "@/app/ui/featuredRestaurants";
 import  ReviewForm from "@/app/ui/reviewForm";
