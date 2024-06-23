@@ -15,7 +15,7 @@ export default function UserRegistrationForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false); // State for handling errors
+  const [success, setSuccess] = useState(true); // State for handling errors
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,10 +60,11 @@ export default function UserRegistrationForm() {
           <div className="flex flex-col items-center justify-center">
             <Image
               src="/success1.gif"
-              width={100}
+              unoptimized
+              width={150}
               height={200}
               alt="success gif"
-              className="rounded-full h-[100px] object-cover"
+              className="rounded-full h-[150px] object-cover"
             />
             <h2 className="text-white mt-7 text-center font-semibold text-2xl">Registration successful</h2>
             <p className="text-white text-center mt-1">Redirecting to login page...</p>
