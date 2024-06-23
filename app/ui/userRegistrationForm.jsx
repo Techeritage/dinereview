@@ -59,12 +59,13 @@ export default function UserRegistrationForm() {
         <div className="absolute z-10 top-0 bottom-0 right-0 left-0 flex items-center justify-center bg-black/70">
           <div className="flex flex-col items-center justify-center">
             <Image
-              src="/success.gif"
-              width={200}
+              src="/success1.gif"
+              width={100}
               height={200}
               alt="success gif"
+              className="rounded-full h-[100px] object-cover"
             />
-            <h2 className="text-white text-center font-semibold text-2xl">Registration successful</h2>
+            <h2 className="text-white mt-7 text-center font-semibold text-2xl">Registration successful</h2>
             <p className="text-white text-center mt-1">Redirecting to login page...</p>
           </div>
         </div>
