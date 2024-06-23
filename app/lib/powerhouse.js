@@ -10,6 +10,7 @@ export const getAllUsers = async () => {
 };
 
 export const getAllRestaurants = async () => {
+  
   try {
     const res = await axios.get("http://localhost:3000/api/restaurants");
     return res.data;
