@@ -80,8 +80,8 @@ export default function FeaturedRestaurants({ restaurants }) {
               </div>
             </div>
             <div className="px-2 py-3 flex flex-wrap items-center gap-2">
-              <div className="w-fit rounded-md border p-1 px-2 text-sm text-[#333333]">African</div>
-              <div className="w-fit rounded-md bg-gray-100 p-1 px-2 text-sm text-[#333333]">Ewa Agboyin</div>
+              <div className="w-fit rounded-md border bg-gray-100 p-1 px-2 text-sm text-[#333333]">Ewa Agboyin</div>
+              <div className="w-fit rounded-md border bg-gray-100 p-1 px-2 text-sm text-[#333333]">African</div>
             </div>
           </div>
         ))}
