@@ -7,7 +7,7 @@ const RestaurantStatus = ({ operatingHours }) => {
   const todayHours = operatingHours.find((day) => day.day === currentDay);
 
   if (!todayHours || !todayHours.isOpen) {
-    return <p className="text-xs text-red-500">Closed</p>;
+    return <p className="text-sm text-red-500">Closed</p>;
   }
 
   const { open, close } = todayHours;
@@ -15,7 +15,7 @@ const RestaurantStatus = ({ operatingHours }) => {
 
   return (
     <>
-      {isOpen ? <p className="text-xs text-myGreen">Open</p> : <p className="text-xs text-red-500">Closed</p>}{" "}
+      {isOpen ? <p className="text-sm text-myGreen">Open</p> : <p className="text-sm text-red-500">Closed</p>}{" "}
     </>
   );
 };

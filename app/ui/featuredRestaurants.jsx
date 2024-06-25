@@ -1,5 +1,8 @@
 "use client";
-import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import {
+  ChatBubbleBottomCenterTextIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/24/outline";
 import { risque } from "./fonts";
 import Image from "next/image";
 import RestaurantStatus from "@/app/ui/restaurantStatus";
@@ -52,24 +55,33 @@ export default function FeaturedRestaurants({ restaurants }) {
                 className="h-[120px] w-full object-cover rounded-ss-lg rounded-tr-lg"
               />
             </div>
-            <div className="p-2">
-              <h3 className="font-semibold max-w-[150px] truncate">
+            <div>
+              <h3 className="font-semibold p-2 pb-0 max-w-[150px] truncate">
                 {rest.name}
               </h3>
-              <RestaurantStatus operatingHours={rest.operatingHours} />
-              <div className="flex items-center justify-between">
-                <p className="text-xs text-[#555555] max-w-[150px] truncate">
+
+              <div className="flex px-2 items-center justify-between">
+                <p className="text-sm text-[#555555] max-w-[150px] truncate">
                   {rest.address}
                 </p>
                 <div className="bg-myGreen font-medium text-white px-1 rounded-full">
-                  <span>4.5</span>/
-                  <span className="text-sm">5</span>
+                  <span className="text-sm">4.5</span>/<span className="text-xs">5</span>
+                </div>
+              </div>
+              <div className="p-2 border-b flex items-center justify-between">
+                <RestaurantStatus operatingHours={rest.operatingHours} />
+                <div className="flex items-center">
+                  <ChatBubbleBottomCenterTextIcon
+                    width={15}
+                    className="text-[#555555]"
+                  />
+                  <span className="texttext-[#555555] text-sm">100</span>
                 </div>
               </div>
             </div>
-            <div>
-              <div>African</div>
-              <div>Ewa Agboyin</div>
+            <div className="px-2 py-3 flex flex-wrap items-center gap-2">
+              <div className="w-fit rounded-md border p-1 text-sm text-[#555555]">African</div>
+              <div className="w-fit rounded-md border p-1 text-sm text-[#555555]">Ewa Agboyin</div>
             </div>
           </div>
         ))}
