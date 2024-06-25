@@ -8,6 +8,7 @@ import Image from "next/image";
 import RestaurantStatus from "@/app/ui/restaurantStatus";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { StarIcon } from "@heroicons/react/16/solid";
 
 export default function FeaturedRestaurants({ restaurants }) {
   /* const [restaurants, setRestaurants] = useState();
@@ -64,8 +65,12 @@ export default function FeaturedRestaurants({ restaurants }) {
                 <p className="text-sm text-[#555555] max-w-[150px] truncate">
                   {rest.address}
                 </p>
-                <div className="bg-myGreen font-medium text-white px-1 rounded-full">
-                  <span className="text-sm">4.5</span>/<span className="text-xs">5</span>
+                <div className="bg-myGreen gap-1 flex items-center font-medium text-white px-1 rounded-full">
+                  <StarIcon width={20} color="#FFA500" />
+                  <div>
+                    <span className="text-sm">4.5</span>/
+                    <span className="text-xs">5</span>
+                  </div>
                 </div>
               </div>
               <div className="p-2 border-b flex items-center justify-between">
@@ -80,8 +85,12 @@ export default function FeaturedRestaurants({ restaurants }) {
               </div>
             </div>
             <div className="px-2 py-3 flex flex-wrap items-center gap-2">
-              <div className="w-fit rounded-md border bg-gray-100 p-1 px-2 text-sm text-[#333333]">Ewa Agboyin</div>
-              <div className="w-fit rounded-md border bg-gray-100 p-1 px-2 text-sm text-[#333333]">African</div>
+              <div className="w-fit rounded-md border bg-gray-100 p-1 px-2 text-sm text-[#333333]">
+                Ewa Agboyin
+              </div>
+              <div className="w-fit rounded-md border bg-gray-100 p-1 px-2 text-sm text-[#333333]">
+                African
+              </div>
             </div>
           </div>
         ))}
