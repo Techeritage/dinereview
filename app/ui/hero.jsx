@@ -39,7 +39,7 @@ export default function Hero() {
             <MagnifyingGlassIcon width={25} className="text-white" />
             <input
               type="text"
-              placeholder="Explore reviews for your favorite restaurants..."
+              placeholder="Search for restaurants, cuisines, or reviews..."
               className="truncate border-none outline-none bg-transparent text-white w-full placeholder:text-white/80 placeholder:text-sm lg:placeholder:text-base"
             />
           </div>
