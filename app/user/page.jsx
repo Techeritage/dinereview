@@ -12,7 +12,7 @@ export default async function UserPage() {
     <main className="relative">
       <div>
         {res.map((dat) => (
-          <p>{dat.name}</p>
+          <p key={dat._id}>{dat.name}</p>
         ))}
       </div>
       <section>
