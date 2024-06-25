@@ -7,11 +7,11 @@ import { getAllRestaurants } from "../lib/powerhouse";
 export default async function UserPage() {
   const data = await getAllRestaurants();
 
-  const res = data.data;
+  const res = data?.data;
   return (
     <main className="relative">
       <div>
-        {res.map((dat) => (
+        {res?.map((dat) => (
           <p key={dat._id}>{dat.name}</p>
         ))}
       </div>
