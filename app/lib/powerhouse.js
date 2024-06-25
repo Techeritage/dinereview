@@ -2,8 +2,11 @@ import axios from "axios";
 
 export const getAllUsers = async () => {
   try {
-    const res = await axios.get("http://localhost:3000/api/users");
-    return res.data;
+    const res = await fetch("https://dinereview.vercel.app/api/users", {
+      cache: "no-store",
+    });
+    const data = await res.json();
+    return data.data;
   } catch (error) {
     console.log(error);
   }
@@ -14,7 +17,8 @@ export const getAllRestaurants = async () => {
     const res = await fetch("https://dinereview.vercel.app/api/restaurants", {
       cache: "no-store",
     });
-    return res.json();
+    const data = await res.json();
+    return data.data;
   } catch (error) {
     console.log(error);
   }
@@ -63,9 +67,11 @@ export const deleteUser = async (id) => {
 
 export const fetchReviews = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/review");
+    const res = await fetch("https://dinereview.vercel.app/api/review", {
+      cache: "no-store",
+    });
     const data = await res.json();
-    return data;
+    return data.data;
   } catch (error) {
     console.log(error);
   }

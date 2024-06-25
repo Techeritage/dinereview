@@ -4,11 +4,10 @@ import { risque } from "./fonts";
 import Image from "next/image";
 import RestaurantStatus from "@/app/ui/restaurantStatus";
 import Link from "next/link";
-import { getAllRestaurants } from "@/app/lib/powerhouse";
 import { useEffect, useState } from "react";
 
-export default function FeaturedRestaurants() {
-  const [restaurants, setRestaurants] = useState();
+export default function FeaturedRestaurants({restaurants}) {
+  /* const [restaurants, setRestaurants] = useState();
 
   async function fetchAllRestaurants() {
     try {
@@ -24,7 +23,7 @@ export default function FeaturedRestaurants() {
   useEffect(() => {
     fetchAllRestaurants();
   }, []);
-
+*/
   return (
     <div className="my-3 mt-7">
       <div className="px-[5%] py-3 flex items-center justify-between">

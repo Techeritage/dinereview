@@ -2,30 +2,24 @@ import Hero from "@/app/ui/hero";
 import FeaturedRestaurants from "@/app/ui/featuredRestaurants";
 import ReviewForm from "@/app/ui/reviewForm";
 import RecentReviews from "@/app/ui/recentReviews";
-import { getAllRestaurants } from "../lib/powerhouse";
+import { fetchReviews, getAllRestaurants } from "../lib/powerhouse";
 
 export default async function UserPage() {
-  const data = await getAllRestaurants();
-
-  const res = data?.data;
+  const restaurants = await getAllRestaurants();
+  const reviews = await fetchReviews();
   return (
     <main className="relative">
-      <div>
-        {res?.map((dat) => (
-          <p key={dat._id}>{dat.name}</p>
-        ))}
-      </div>
       <section>
         <Hero />
       </section>
       <section>
-        <FeaturedRestaurants />
+        <FeaturedRestaurants restaurants={restaurants} />
       </section>
       <section>
-        <ReviewForm />
+        <ReviewForm restaurants={restaurants} />
       </section>
       <section>
-        <RecentReviews />
+        <RecentReviews reviews={reviews} />
       </section>
     </main>
   );

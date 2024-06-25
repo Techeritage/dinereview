@@ -8,14 +8,14 @@ import { useContext, useEffect, useState } from "react";
 import { addreview, getAllRestaurants } from "../lib/powerhouse";
 import ReviewFormContext from "../providers/ReviewControl";
 
-export default function ReviewForm() {
+export default function ReviewForm({restaurants}) {
   const { data: session } = useSession();
   const [selectedRestaurant, setSelectedRestaurant] = useState("");
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
   const [error, setError] = useState("");
-
   const { isReviewFormVisible, hideReviewForm } = useContext(ReviewFormContext);
+  /*
   const [restaurants, setRestaurants] = useState();
 
   async function fetchAllRestaurants() {
@@ -31,7 +31,7 @@ export default function ReviewForm() {
 
   useEffect(() => {
     fetchAllRestaurants();
-  }, []);
+  }, []); */
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
