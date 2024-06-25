@@ -11,7 +11,7 @@ export const getAllUsers = async () => {
 
 export const getAllRestaurants = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/restaurants", {
+    const res = await fetch("https://dinereview.vercel.app/api/restaurants", {
       cache: "no-store",
     });
     return res.json();
