@@ -42,14 +42,14 @@ export default function FeaturedRestaurants({ restaurants }) {
       </div>
       <div className="px-[5%] pb-10 mt-2 flex gap-3 overflow-scroll no-scrollbar">
         {restaurants?.map((rest) => (
-          <div key={rest._id} className="w-[270px] shadow-lg rounded-lg">
+          <div key={rest._id} className="min-w-[270px] shadow-lg rounded-lg">
             <div>
               <Image
                 src={rest.images[0]}
                 width={270}
                 height={120}
                 alt={`${rest.name} image`}
-                className="h-[120px] object-cover rounded-ss-lg rounded-tr-lg"
+                className="h-[120px] w-full object-cover rounded-ss-lg rounded-tr-lg"
               />
             </div>
             <div className="p-2">
