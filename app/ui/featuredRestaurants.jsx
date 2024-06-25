@@ -2,13 +2,13 @@
 import {
   ChatBubbleBottomCenterTextIcon,
   ChevronRightIcon,
+  StarIcon,
 } from "@heroicons/react/24/outline";
 import { risque } from "./fonts";
 import Image from "next/image";
 import RestaurantStatus from "@/app/ui/restaurantStatus";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { StarIcon } from "@heroicons/react/16/solid";
 
 export default function FeaturedRestaurants({ restaurants }) {
   /* const [restaurants, setRestaurants] = useState();
@@ -46,7 +46,7 @@ export default function FeaturedRestaurants({ restaurants }) {
       </div>
       <div className="px-[5%] pb-10 mt-2 flex gap-3 overflow-scroll no-scrollbar">
         {restaurants?.map((rest) => (
-          <div key={rest._id} className="min-w-[270px] shadow-lg rounded-lg">
+          <div key={rest._id} className="overflow-hidden min-w-[270px] shadow-lg rounded-lg">
             <div>
               <Image
                 src={rest.images[0]}
@@ -65,8 +65,8 @@ export default function FeaturedRestaurants({ restaurants }) {
                 <p className="text-sm text-[#555555] max-w-[150px] truncate">
                   {rest.address}
                 </p>
-                <div className="bg-myGreen gap-1 flex items-center font-medium text-white px-1 rounded-full">
-                  <StarIcon width={20} color="#FFA500" />
+                <div className="bg-myGreen gap-1 flex items-center font-medium text-white px-1 pr-4 mr-[-18px] rounded-full">
+                  <StarIcon width={20} color="white" />
                   <div>
                     <span className="text-sm">4.5</span>/
                     <span className="text-xs">5</span>
