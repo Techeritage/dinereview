@@ -34,7 +34,7 @@ export default function RecentReviews({ reviews }) {
             key={review._id}
             className="mt-4 min-h-[180px] p-3 pl-0 border-b border-[#d5d5d5]/80 last:border-0"
           >
-            <div className="flex items-center gap-2 mb-4 pl-2">
+            <div className="flex items-center gap-2 mb-5 pl-2">
               <Image
                 src={review?.restaurant?.profilePictureUrl}
                 width={20}
@@ -55,7 +55,7 @@ export default function RecentReviews({ reviews }) {
                 className="rounded-full h-[50px] object-cover"
               />
               <div className="flex h-[45px] items-center flex-col justify-between">
-                <p className={`tracking-wide text-[#333333] font-semibold`}>
+                <p className={`tracking-wide text-[#333333] font-medium`}>
                   {review.user?.name}
                 </p>
                 <div className="flex items-center gap-3">
