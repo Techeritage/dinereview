@@ -55,7 +55,7 @@ export default function RecentReviews({ reviews }) {
                 className="rounded-full h-[50px] object-cover"
               />
               <div className="flex h-[45px] items-center flex-col justify-between">
-                <p className={`${risque.className} tracking-wide text-[#333333]`}>
+                <p className={`tracking-wide text-[#333333] font-semibold`}>
                   {review.user?.name}
                 </p>
                 <div className="flex items-center gap-3">
