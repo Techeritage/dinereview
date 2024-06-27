@@ -25,6 +25,9 @@ export default async function UserPage() {
       <section>
         <RecentReviews reviews={reviews} />
       </section>
+      <section>
+        <FeaturedRestaurants restaurants={restaurants} />
+      </section>
     </main>
   );
 }
