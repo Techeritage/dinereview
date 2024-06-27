@@ -24,7 +24,7 @@ export default function RecentReviews({ reviews }) {
     fetchAllReviews();
   }, []); */
   return (
-    <div className="my-3 mt-7 px-[5%] py-10 bg-gray-50">
+    <div className="px-[5%] pb-5">
       <h2 className={`${risque.className} tracking-wide text-xl capitalize`}>
         recent reviews
       </h2>
@@ -32,7 +32,7 @@ export default function RecentReviews({ reviews }) {
         {reviews?.map((review) => (
           <div
             key={review._id}
-            className="mt-2 shadow-sm min-h-[200px] p-3 bg-white rounded-xl"
+            className="mt-4 min-h-[180px] p-3 pl-0 border-b border-[#d5d5d5]/30"
           >
             <div className="flex items-center gap-2 mb-4 pl-2">
               <Image
