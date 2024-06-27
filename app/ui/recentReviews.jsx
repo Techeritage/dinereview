@@ -24,7 +24,7 @@ export default function RecentReviews({ reviews }) {
     fetchAllReviews();
   }, []); */
   return (
-    <div className="px-[5%] py-10 mt-7 bg-[#f0f0f0]/20">
+    <div className="px-[5%] py-10 mt-7 border-t border-[#d5d5d5]/60">
       <h2 className={`${risque.className} tracking-wide text-xl capitalize`}>
         recent reviews
       </h2>

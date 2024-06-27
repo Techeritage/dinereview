@@ -34,8 +34,8 @@ const cuisines = [
 
 export default function CuisineSection() {
   return (
-    <div className="my-3 mt-8">
-      <div className="px-[5%] py-3 flex items-center justify-between">
+    <div className="mt-7 py-10">
+      <div className="px-[5%] pb-3 flex items-center justify-between">
         <h2 className={`${risque.className} tracking-wide text-xl capitalize`}>
           Explore by Cuisine
         </h2>
