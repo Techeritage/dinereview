@@ -29,7 +29,7 @@ export default function FeaturedRestaurants({ restaurants }) {
   }, []);
 */
   return (
-    <div className="mb-3 mt-7">
+    <div className="mb-3 mt-10">
       <div className="px-[5%] py-3 flex items-center justify-between">
         <h2 className={`${risque.className} tracking-wide text-xl capitalize`}>
           featured restaurants
@@ -44,7 +44,7 @@ export default function FeaturedRestaurants({ restaurants }) {
           </span>
         </Link>
       </div>
-      <div className="px-[5%] pb-10 mt-2 flex gap-3 overflow-scroll no-scrollbar">
+      <div className="px-[5%] pb-10 mt-4 flex gap-3 overflow-scroll no-scrollbar">
         {restaurants?.map((rest) => (
           <div key={rest._id} className="overflow-hidden min-w-[270px] shadow-lg rounded-lg">
             <div>

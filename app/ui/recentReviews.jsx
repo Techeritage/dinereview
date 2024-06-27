@@ -28,11 +28,11 @@ export default function RecentReviews({ reviews }) {
       <h2 className={`${risque.className} tracking-wide text-xl capitalize`}>
         recent reviews
       </h2>
-      <div className="mt-3">
+      <div className="mt-5">
         {reviews?.map((review) => (
           <div
             key={review._id}
-            className="mt-4 min-h-[180px] p-3 pl-0 border-b border-[#d5d5d5]/30"
+            className="mt-4 min-h-[180px] p-3 pl-0 border-b border-[#d5d5d5]/70"
           >
             <div className="flex items-center gap-2 mb-4 pl-2">
               <Image
@@ -65,7 +65,7 @@ export default function RecentReviews({ reviews }) {
               </div>
             </div>
             <p
-              className="text-sm pl-2 font-normal text-[#333333]"
+              className="text-sm pl-2 font-normal text-[#555555]"
               key={review._id}
             >
               {review.comment}

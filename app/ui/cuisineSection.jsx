@@ -34,13 +34,13 @@ const cuisines = [
 
 export default function CuisineSection() {
   return (
-    <div className="my-3 mt-7">
+    <div className="my-3 mt-8">
       <div className="px-[5%] py-3 flex items-center justify-between">
         <h2 className={`${risque.className} tracking-wide text-xl capitalize`}>
           Explore by Cuisine
         </h2>
       </div>
-      <div className="px-[5%] mt-2 grid gap-5 grid-cols-2 md:grid-cols-4">
+      <div className="px-[5%] mt-4 grid gap-5 grid-cols-2 md:grid-cols-4">
         {cuisines?.map((rest) => (
           <div
             key={rest.name}

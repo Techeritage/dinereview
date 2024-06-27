@@ -37,7 +37,7 @@ const TimeAgo = ({ timestamp }) => {
     return () => clearInterval(interval);
   }, [timestamp]);
 
-  return <span className="font-medium italic text-xs text-[#555555]">{timeAgo}</span>;
+  return <span className="font-medium italic text-sm text-[#555555]">{timeAgo}</span>;
 };
 
 export default TimeAgo;
